@@ -1,0 +1,17 @@
+{
+  "pages": [ 
+    "pages/radar-list/radar-list",
+    "pages/radar-control/radar-control",
+    "pages/water-control/water-control",
+    "pages/water-control-2/water-control-2",
+    "pages/flow-control/flow-control",
+    "pages/volume-control/volume-control"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f0f7fc",
+    "navigationBarTitleText": "雷达蓝牙",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

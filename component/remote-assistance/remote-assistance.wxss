@@ -1,0 +1,18 @@
+/* component/remoteAssistance/remote-assistance.wxss */
+.head{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.card {
+  /* width:670rpx; */
+  border-style: solid;
+  border-width: 1rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-bottom:3px;
+}
+
+.tips{
+padding-left: 5px;
+}

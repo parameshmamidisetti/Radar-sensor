@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../component/ec-canvas/ec-canvas",
+    "radar-data":"../../component/radar-data/radar-data",
+    "radar-wave":"../../component/radar-wave/radar-wave",
+    "radar-set":"../../component/radar-set/radar-set",
+    "remote-assistance": "../../component/remote-assistance/remote-assistance"
+  }
+}

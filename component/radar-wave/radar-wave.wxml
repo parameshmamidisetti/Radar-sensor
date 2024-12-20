@@ -1,0 +1,4 @@
+<!--component/radar-wave/radar-wave.wxml-->
+  <view wx:if='{{display ? !onlogin:false}}' class="view-wave">
+    <ec-canvas id="radar-wave-dom" canvas-id="radar-wave" ec="{{ radarChart }}"></ec-canvas>
+  </view>

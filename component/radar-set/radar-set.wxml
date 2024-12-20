@@ -1,0 +1,160 @@
+<!--component/radar-set/radar-set.wxml-->
+<view wx:for='{{setMenu}}' wx:for-index="menuIdx" wx:for-item="menuItem" wx:key="name">
+	<!--设置项一级菜单名称-->
+  <view class="title_set" id='{{menuIdx}}menu' catchtap="displayChange">
+    {{_lang[menuItem.name]}}
+  </view>
+  <view wx:if="{{menuItem.display && loggedIn}}">
+    <view wx:if="{{menuItem.name=='专家设置'}}">
+      <view wx:if='{{!activePasswordEnter}}'>
+        <view class="flex-row">
+          <view class="flex-item flex-item-head">{{_lang["动态密码"]}}：</view>
+          <view class="flex-item flex-item-input">
+            <input id='ASDF' bindinput="bindActivePasswordInputChange" class="weui-input" type="digit" placeholder="--" value='{{activePassword}}'/>
+          </view>
+          <view class="flex-row" style="margin-top: 5rpx;justify-content: space-between;">
+            <view class="flex-item " style="flex-grow:1;text-align: center;">
+              <button id='{{menuIdx}}menu_set' class="weui-btn mini-btn" type="default" size="mini" catchtap="cat_activePassword">{{_lang["设置"]}}</button>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view wx:for='{{menuItem.settings}}' wx:key="head" wx:for-index="settingIdx" wx:for-item="settingItem">
+          <view wx:if="{{settingItem.head == '输出平滑' || settingItem.head == '跟踪平滑2' || settingItem.head == '跟踪平滑3'}}">
+            <view wx:if="{{versionReq == true}}">
+              <!--输入类型 数字-->
+              <view wx:if='{{settingItem.type == 1}}' class="flex-row">
+                <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+                <view style="display: flex;">
+                  <view class="flex-item flex-item-input">
+                    <input id='{{menuIdx}}-{{settingIdx}}' bindinput="bindInputChange" class="weui-input {{settingItem.inputStyle}}" type="digit" placeholder="{{settingItem.baseValue}}" value='{{settingItem.value}}'/>
+                  </view>
+                  <view class="flex-item flex-item-unit">{{settingItem.unit}}</view>
+                </view>
+              </view>
+              <!--选择类型-->
+              <view wx:if='{{settingItem.type == 2}}' class="flex-row">
+                <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+                <view style="display: flex;">
+                  <view class="flex-item flex-item-picker">
+                    <picker id='{{menuIdx}}-{{settingIdx}}' style="width: 400rpx;" bindchange="bindPickerChange" value="{{settingItem.value}}" range="{{settingItem.option}}">
+                      <view class="picker  {{settingItem.inputStyle}}" style="text-align: center">
+                        {{_lang[settingItem.option[settingItem.value]]}}
+                      </view>
+                    </picker>
+                  </view>
+                  <view class="flex-item" style="width:130rpx"></view>
+                </view>
+              </view>
+              <!--输入类型 字符串-->
+              <view wx:if='{{settingItem.type == 3}}' class="flex-row">
+                <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+                <view style="display: flex;">
+                  <view class="flex-item flex-item-input">
+                    <input id='{{menuIdx}}-{{settingIdx}}' bindinput="bindInputChange" class="weui-input {{settingItem.inputStyle}}" type="text" placeholder="{{settingItem.baseValue}}" value='{{settingItem.value}}' />
+                  </view>
+                  <view class="flex-item flex-item-unit">{{settingItem.unit}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <!--输入类型 数字-->
+            <view wx:if='{{settingItem.type == 1}}' class="flex-row">
+              <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+              <view style="display: flex;">
+                <view class="flex-item flex-item-input">
+                  <input id='{{menuIdx}}-{{settingIdx}}' bindinput="bindInputChange" class="weui-input {{settingItem.inputStyle}}" type="digit" placeholder="{{settingItem.baseValue}}" value='{{settingItem.value}}'/>
+                </view>
+                <view class="flex-item flex-item-unit">{{settingItem.unit}}</view>
+              </view>
+            </view>
+            <!--选择类型-->
+            <view wx:if='{{settingItem.type == 2}}' class="flex-row">
+              <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+              <view style="display: flex;">
+                <view class="flex-item flex-item-picker">
+                  <picker id='{{menuIdx}}-{{settingIdx}}' style="width: 400rpx;" bindchange="bindPickerChange" value="{{settingItem.value}}" range="{{settingItem.option}}">
+                    <view class="picker  {{settingItem.inputStyle}}" style="text-align: center">
+                      {{_lang[settingItem.option[settingItem.value]]}}
+                    </view>
+                  </picker>
+                </view>
+                <view class="flex-item" style="width:130rpx"></view>
+             </view>
+            </view>
+            <!--输入类型 字符串-->
+            <view wx:if='{{settingItem.type == 3}}' class="flex-row">
+              <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+              <view style="display: flex;">
+                <view class="flex-item flex-item-input">
+                  <input id='{{menuIdx}}-{{settingIdx}}' bindinput="bindInputChange" class="weui-input {{settingItem.inputStyle}}" type="text" placeholder="{{settingItem.baseValue}}" value='{{settingItem.value}}' />
+                </view>
+                <view class="flex-item flex-item-unit">{{settingItem.unit}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!--确认 取消-->
+        <view class="flex-row" style="margin-top: 5rpx;justify-content: space-between; display: flex;">
+          <view class="flex-item " style="flex-grow:1;text-align: center;">
+            <button id='{{menuIdx}}menu_bak' class="weui-btn mini-btn" type="default" size="mini" catchtap="cat_BaksetValue">{{_lang["刷新"]}}</button>
+          </view>
+          <view class="flex-item " style="flex-grow:1;text-align: center;">
+            <button id='{{menuIdx}}menu_set' class="weui-btn mini-btn" type="default" size="mini" catchtap="cat_SetValue">{{_lang["设置"]}}</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <view wx:for='{{menuItem.settings}}' wx:key="head" wx:for-index="settingIdx" wx:for-item="settingItem">
+        <!--输入类型 数字-->
+        <view wx:if='{{settingItem.type == 1}}' class="flex-row">
+          <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+          <view style="display: flex;">
+            <view class="flex-item flex-item-input">
+              <input id='{{menuIdx}}-{{settingIdx}}' bindinput="bindInputChange" class="weui-input {{settingItem.inputStyle}}" type="digit" placeholder="{{settingItem.baseValue}}" value='{{settingItem.value}}'/>
+            </view>
+            <view class="flex-item flex-item-unit">{{settingItem.unit}}</view>
+         </view>
+        </view>
+        <!--选择类型-->
+        <view wx:if='{{settingItem.type == 2}}' class="flex-row">
+          <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+          <view style="display: flex;">
+            <view class="flex-item flex-item-picker">
+              <picker id='{{menuIdx}}-{{settingIdx}}' style="width: 400rpx;" bindchange="bindPickerChange" value="{{settingItem.value}}" range="{{settingItem.option}}">
+                <view class="picker  {{settingItem.inputStyle}}" style="text-align: center">
+                  {{_lang[settingItem.option[settingItem.value]]}}
+                </view>
+              </picker>
+            </view>
+            <view class="flex-item" style="width:130rpx"></view>
+          </view>
+        </view>
+        <!--输入类型 字符串-->
+        <view wx:if='{{settingItem.type == 3}}' class="flex-row">
+          <view class="flex-item flex-item-head">{{_lang[settingItem.head]}}：</view>
+          <view style="display: flex;">
+            <view class="flex-item flex-item-input">
+              <input id='{{menuIdx}}-{{settingIdx}}' bindinput="bindInputChange" class="weui-input {{settingItem.inputStyle}}" type="text" placeholder="{{settingItem.baseValue}}" value='{{settingItem.value}}' />
+            </view>
+            <view class="flex-item flex-item-unit">{{settingItem.unit}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!--确认 取消-->
+      <view class="flex-row" style="margin-top: 5rpx;justify-content: space-between; display: flex;">
+        <view class="flex-item " style="flex-grow:1;text-align: center;">
+          <button id='{{menuIdx}}menu_bak' class="weui-btn mini-btn" type="default" size="mini" catchtap="cat_BaksetValue">{{_lang["刷新"]}}</button>
+        </view>
+        <view class="flex-item " style="flex-grow:1;text-align: center;">
+          <button id='{{menuIdx}}menu_set' class="weui-btn mini-btn" type="default" size="mini" catchtap="cat_SetValue">{{_lang["设置"]}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

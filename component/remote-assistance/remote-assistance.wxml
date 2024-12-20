@@ -1,0 +1,4 @@
+<!--component/remoteAssistance/remote-assistance.wxml-->
+<view class=" card">
+	<text class="head">{{_lang['远程协助']}}</text> <switch checked="{{remoteAssistanceSwitch}}" bindchange="switch1Change" style=""/> <text class="tips"> {{v_infoTips}}</text>
+</view>

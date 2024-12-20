@@ -1,0 +1,51 @@
+<view class="page">
+    <view class="head">
+        <view class="ble_name" style="width:680rpx;">{{ble_name}}</view>
+        <water-data bind:blecancel='onBleListCancel' bind:blelisttap='onBleListDisplay' bind:bleconnect="onbleSelect"
+            ble-list='{{bleList}}' comm-error='{{commError}}' radar-error-code='{{radarInfo_data.errorCode}}'
+            m-a-realtime-value='{{radarInfo_data.mARealtimeValue}}' damping-result='{{radarInfo_data.dampingResult}}'
+            sensor-mode='{{radarInfo_data.sensorMode}}' m-acurrentutput-function='{{radarInfo_data.mAcurrentutputFunction}}' ble-connect-status='{{bleConnectStatus}}' water-level='{{radarInfo_data.waterLevel}}'/>
+    </view>
+
+    <view class="line"></view>
+
+    <view class="chart view-wave">
+      <water-wave wx:if='{{!loginOpen}}' fft-wave="{{l_lcd_fft}}" tvt-wave="{{l_lcd_tvt}}" _lang="{{_lang}}"/>
+    </view>
+
+    <view class="line"></view>
+    
+    <view class="title_set" id='base_menu' catchtap="displayChange">
+		  {{_lang["基本设置"]}}
+	  </view>
+    <view wx:if="{{showBaseList}}" class="paramSet">
+      <view wx:for="{{water_setList}}" wx:for-index="menuIdx" wx:for-item="menuItem" wx:key="name">
+        <view wx:if="{{menuItem.id<16}}">
+          <view wx:if="{{menuItem.type == 'text'}}">
+            <text-com text-label="{{menuItem.head}}" text-unit="{{menuItem.unit}}" text="{{menuItem.value}}" tips="{{menuItem.tips}}" bind:setcmd="onSetCmd" bind:readcmd="onReadCmd" variable="{{menuItem.variable}}" com-id="{{menuItem.id}}" text-type="{{menuItem.textType}}" _lang="{{_lang}}"/>
+          </view>
+          <view wx:else="{{menuItem.type == 'select'}}">
+            <select-com text-label="{{menuItem.head}}" text-unit="{{menuItem.unit}}" select-items="{{menuItem.option}}" bind:setcmd="onSetCmd" bind:readcmd="onReadCmd" variable="{{menuItem.variable}}" choice-item="{{menuItem.value}}" com-id="{{menuItem.id}}" _lang="{{_lang}}"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="title_set" id='ble_menu' catchtap="displayChange">
+		  {{_lang["蓝牙设置"]}}
+	  </view>
+    <view wx:if="{{showBleList}}" class="paramSet">
+      <view wx:for="{{water_setList}}" wx:for-index="menuIdx" wx:for-item="menuItem" wx:key="name">
+        <view wx:if="{{menuItem.id>=16}}">
+          <view wx:if="{{menuItem.type == 'text'}}">
+            <text-com text-label="{{menuItem.head}}" text-unit="{{menuItem.unit}}" text="{{menuItem.value}}" tips="{{menuItem.tips}}" bind:setcmd="onSetCmd" bind:readcmd="onReadCmd" variable="{{menuItem.variable}}" com-id="{{menuItem.id}}" text-type="{{menuItem.textType}}" _lang="{{_lang}}"/>
+          </view>
+          <view wx:else="{{menuItem.type == 'select'}}">
+            <select-com text-label="{{menuItem.head}}" text-unit="{{menuItem.unit}}" select-items="{{menuItem.option}}" bind:setcmd="onSetCmd" bind:readcmd="onReadCmd" variable="{{menuItem.variable}}" choice-item="{{menuItem.value}}" com-id="{{menuItem.id}}" _lang="{{_lang}}"/>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+
+
+

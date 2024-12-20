@@ -1,0 +1,4 @@
+<view wx:for="{{groupItems}}" wx:for-index="menuIdx" wx:for-item="groupItem" wx:key="name">
+  
+
+</view>

@@ -1,0 +1,64 @@
+/* pages/index.wxss */
+page{
+  background-color: rgb(240, 247, 252);
+}
+/*横向布局  */
+.layout_horizontal {
+  height: 100rpx;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: row;
+}
+
+/*纵向布局  */
+.layout_vertical {
+  height: 100rpx;
+  display: flex;
+  /*row 横向  column 列表  */
+  flex-direction: column;
+}
+
+/*划线  */
+.line {
+  background-color: black;
+  height: 2rpx;
+  width: 100%;
+}
+
+/*边框*/
+.border {
+  border: 1px solid red;
+}
+
+.view-wave {
+  width: 740rpx;
+  height: 510rpx;
+}
+
+
+
+
+/*登录界面*/
+.weui-demo-dialog {
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.weui-half-screen-dialog {
+  transition: all .3s;
+  transform: translateY(100%);
+}
+
+.weui-demo-dialog_show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.weui-demo-dialog_show .weui-half-screen-dialog {
+  transform: translateY(0);
+}
+
+.border {
+  border: 1px solid red;
+}

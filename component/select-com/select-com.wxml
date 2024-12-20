@@ -1,0 +1,48 @@
+<!-- <view class="param-body">
+  <view class="flex-item flex-item-head">{{_lang[textLabel]}}</view>
+</view>
+<view class="param-body">
+  <view class="flex-row" style="width: 400rpx; height: 52rpx; display: flex; box-sizing: border-box">
+      <view class="flex-item flex-item-picker" style="width: 234rpx; height: 42rpx; display: block; box-sizing: border-box; position: relative; left: -52rpx; top: 8rpx">
+        <picker id='123' style="width: 200rpx;" bindchange="bindPickerChange" value="" range="{{selectItems}}" value="{{_lang[choiceItem]}}">
+          <view class="picker" style="text-align: center">{{_lang[choiceItem]}}</view>
+        </picker>
+      </view>
+  </view>
+  <view class="flex-item param-unit" style="position: relative; left: -38rpx; top: 4rpx">{{textUint}}</view>
+  <button class='param-button-read' style="width: 113rpx; height: 52rpx; display: block; box-sizing: border-box; left: -10rpx; top: 0rpx; position: relative" catchtap="cat_ReadValue">{{_lang["读取"]}}</button>
+  <button class='param-button-set' style="width: 113rpx; height: 52rpx; display: block; box-sizing: border-box; left: -12rpx; top: 0rpx; position: relative" catchtap="cat_SetValue">{{_lang["设置2"]}}</button>
+</view> -->
+
+
+<view style="background-color: #ffffff; display: flex; justify-content: center; width: 750rpx; height: 127rpx; box-sizing: border-box; margin-bottom: 20rpx">
+        <view style="display: flex; flex-direction: column; height: 100%; width: 94%; border-style: solid; border-width: 1px; border-color: rgb(187, 187, 224);">
+          <view style="background-color: #ffffff; display: flex; align-items: center; width: 100%; height: 40%; box-sizing: border-box">
+            <text style="position: relative; height: 100%">{{_lang[textLabel]}}{{textUint}}</text>
+          </view>
+          <view style="background-color: #ffffff; flex: 1; height: 60%">
+            <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+              <view style="background-color: #ffffff; width: 379rpx; height: 74rpx; display: block; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+              <picker id='123' bindchange="bindPickerChange" value="" range="{{selectItems}}" value="{{_lang[choiceItem]}}" style="height: 80%; width: 80%; border-style: solid; border-width: 1px; box-shadow: 1px 1px 4px rgb(108, 154, 214); border-color: rgb(108, 154, 214); display: flex; align-items: center; justify-content: center;">
+                <text style="position: relative; width: 100%; height: 100%; text-align: center">{{_lang[choiceItem]}}</text>
+              </picker></view>
+              <view style="background-color: #ffffff; flex: 1;display: flex; align-items: center; justify-content: center;">
+                <view style="background-color: #3a8fc7; display: flex; flex-direction: row; height: 80%; width: 90%; border-radius: 10px" catchtap="{{!buttonLock ? 'cat_ReadValue':''}}">
+                  <view style="background-color: #3a8fc7; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 93rpx; height: 100%; display: flex; align-items: center; justify-content: center">
+                    <text style="position: relative; color: #ffffff">{{_lang["读取"]}}</text>
+                  </view>
+                  <view style="background-color: #3a8fc7; flex: 1; border-top-right-radius: 10px; border-bottom-right-radius: 10px; display: flex; align-items: center; "><view class="iconfont icon-dianji" style="line-height: 50rpx"></view></view>
+                </view>
+              </view>
+              <view style="background-color: #ffffff; flex: 1;display: flex; align-items: center; justify-content: center;">
+                <view style="background-color: #3a8fc7; display: flex; flex-direction: row; height: 80%; width: 90%; border-radius: 10px" catchtap="{{!buttonLock ? 'cat_SetValue':''}}">
+                  <view style="background-color: #3a8fc7; border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 93rpx; height: 100%; display: flex; align-items: center; justify-content: center">
+                    <text style="position: relative; color: #ffffff">{{_lang["设置2"]}}</text>
+                  </view>
+                  <view style="background-color: #3a8fc7; flex: 1; border-top-right-radius: 10px; border-bottom-right-radius: 10px; display: flex; align-items: center; "><view class="iconfont icon-shezhi" style="line-height: 50rpx"></view></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>

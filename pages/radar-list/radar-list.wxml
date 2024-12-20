@@ -1,0 +1,229 @@
+<view class=" page">
+        <view style="display: flex; flex-direction: column; height: 1449rpx; width: 750rpx; box-sizing: border-box">
+          <view style="background-color: #F1F1F1; flex: 1;">
+            <image style="position:relative; width: 100%; height: 100%;" src="../../images/flow-bg.png" />
+          </view>
+          <view style="background-color: #ffffff; width: 750rpx; height: 110rpx; display: block; box-sizing: border-box; margin: auto">
+            <view style="width: 96%; background: #d1d1d1; height: 96%; align-items: center; display: flex; justify-content: center; position: relative; left: 16rpx; top: 4rpx">
+              <view style="width: 96%; background: #d1d1d1; height: 90%; background: #d1d1d1; border-color: #ffffff; border-width: 2rpx; position: relative; border-style: solid;">
+                <view style="display:flex; flex-direction:row; height: 100%; width: 100%;">
+                  <view style="background-color: #d1d1d1; flex: 1; display: flex">
+                    <text style="position: relative; align-items: center; justify-items: center; display: flex; width: 100%; height: 100%">{{_lang["雷达数量"]}}：{{bleList.length}}</text>
+                  </view>
+                  <view style="background-color: #d1d1d1; width: 147rpx; height: 95rpx; display: flex; align-items: center; box-sizing: border-box">
+                    <view catchtap="cat_refreshBle" style="flex-direction: row; height: 60%; width: 100%; display: flex; align-content: center; background-color: #28cc28; border-radius: 5px">
+                      <view style="background-color: #28cc28; width: 106rpx; height: 100%; display: flex; box-sizing: border-box; border-radius: 5px; align-items: center; justify-content: center">
+                        <text style="position: relative; height: 100%; width: 100%; text-align: center">{{_lang["刷新"]}}</text>
+                      </view>
+                      <view style="background-color: #28cc28; width: 66rpx; height: 56rpx; display: flex; box-sizing: border-box; border-radius: 5px; align-items: c; justify-content: center"><view class="iconfont icon-shuaxin" style="width: 100%; height: 100%; text-align: center; line-height: 180%"></view></view>
+                    </view>
+                  
+                  </view>
+                  <picker bindchange="changeLang" value="{{languageIndex}}" range="{{languageArray}}" style="background-color: #d1d1d1; flex: 1; display: flex; align-items: center; justify-content: center"><text style="position: relative; display: flex; width: 100%; text-align: right; justify-content: center; align-items: center; white-space: nowrap;">{{currentLanguage}}</text></picker>
+                </view>
+              </view>
+            </view>
+          </view>
+          
+          <view style="background-color: #ffffff; width: 750rpx; height: 850rpx; display: block; box-sizing: border-box; justify-content: center">
+            <view wx:for='{{bleList}}' wx:for-index="idx" wx:for-item="ble" wx:key="deviceid" style="display: flex; flex-direction: column; height: 200rpx; padding: 10px; margin-bottom: 10px; width: 98%; box-sizing: border-box; word-break: break-all;">
+              <view style="background-color: #F1F1F1; flex: 1;border-style: solid; border-width: 2px; border-color: #838383;">
+                <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+                  <view style="background-color: #b4afaf; width: 325rpx; height: 100%; box-sizing: border-box; display: flex">
+                    <text style="position: relative; width: 100%; height: 100%; line-height: 75rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx">{{ble.name}}({{ble.RSSI}})</text>
+                  </view>
+                  <view style="background-color: #b4afaf; width: 104rpx; height: 100%; display: block; box-sizing: border-box">
+                    <text style="width: 100%; height: 100%; line-height: 75rpx">{{_lang[ble.deviceType]}}</text>
+                  </view>
+                  <view style="background-color: #b4afaf; width: 104rpx; height: 100%; box-sizing: border-box">
+                    <image style="position: relative; width: 100%; height: 100%" src="" />
+                  </view>
+                  <view style="background-color: #b4afaf; flex: 1; display: flex; align-items: center; justify-content: center">
+                    <view style="background: #387ed8; height: 80%; width: 80%; border-radius: 10px">
+            
+                      <view style="display: flex; flex-direction: row; height: 100%; width: 100%; background: #387ed8; border-radius: 10px">
+                        <view style="background-color: #387ed8; width: 83rpx; height: 60rpx; box-sizing: border-box; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                          <text style="position: relative; width: 100%; height: 100%; line-height: 60rpx; text-align: center; white-space: nowrap;" id='{{ble.deviceid}}' catchtap="cat_enterRadar" data-devicemode='{{ble.v_sensorMode}}' data-devicename='{{ble.name}}' data-devicemodbusaddr='{{ble.modbus_addr}}'>{{_lang["设置"]}}</text>
+                        </view>
+                        <view style="background-color: #387ed8; flex: 1;; border-radius: 10px">
+                          <view class="iconfont icon-shezhi" style="width: 100%; height: 100%; text-align: center; line-height: 66rpx"></view>
+                        </view>
+                      </view>
+            
+                    </view>
+                  </view>
+                  </view>
+              </view>
+              <view style="background-color: #E6E6E6; flex: 1;" wx:if="{{ble.deviceType == '物位计'}}">
+                <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+                  <view style="background-color: #F1F1F1; flex: 1; display: flex; align-items: center; justify-content: center">
+                    <view style="background: #387ed8; height: 60%; width: 60%; border-radius: 10px; display: flex">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: center">{{_lang[ble.v_sensorMode]}}</text>
+                    </view>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;display: flex;">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: left; line-height: 73rpx">{{ble.v_dampingVal}}m</text>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;display: flex; align-items: center; justify-content: center">
+                    <view style="background: #387ed8; height: 60%; width: 60%; border-radius: 10px; display: flex">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: center">{{_lang[ble.v_mAcurrentutputFunction]}}</text>
+                    </view>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;">
+                    <text style="position: relative; width: 100%; height: 100%; text-align: left; line-height: 73rpx">{{ble.v_mARealtimeValue}}mA</text>
+                  </view>
+                </view>
+              </view>
+              <view style="background-color: #E6E6E6; flex: 1;" wx:elif="{{ble.deviceType == '水位计'}}">
+                <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+                  <view style="background-color: #F1F1F1; flex: 1; display: flex; align-items: center; justify-content: center">
+                    <view style="background: #387ed8; height: 60%; width: 60%; border-radius: 10px; display: flex">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: center">{{_lang[ble.v_sensorMode]}}</text>
+                    </view>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;display: flex;">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: left; line-height: 73rpx">{{ble.v_waterLevel}}m</text>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;display: flex; align-items: center; justify-content: center">
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;">
+                  </view>
+                </view>
+              </view>
+              <view style="background-color: #E6E6E6; flex: 1;" wx:elif="{{ble.deviceType == '流速计'}}">
+                <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+                  <view style="background-color: #F1F1F1; flex: 1; display: flex; align-items: center; justify-content: center">
+                    <view style="background: #387ed8; height: 60%; width: 60%; border-radius: 10px; display: flex">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: center">{{_lang[ble.v_sensorMode]}}</text>
+                    </view>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;display: flex;">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: left; line-height: 73rpx">{{ble.flow_velocity}}m/s</text>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;display: flex; align-items: center; justify-content: center">
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;">
+                  </view>
+                </view>
+              </view>
+              <view style="background-color: #E6E6E6; flex: 1;" wx:else="{{ble.deviceType == '流量计'}}">
+                <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+                  <view style="background-color: #F1F1F1; flex: 1; display: flex; align-items: center; justify-content: center">
+                    <view style="background: #387ed8; height: 60%; width: 60%; border-radius: 10px; display: flex">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: center">{{_lang[ble.v_sensorMode]}}</text>
+                    </view>
+                  </view>
+                  <view style="background-color: #F1F1F1; flex: 1;display: flex;">
+                      <text style="position: relative; width: 100%; height: 100%; text-align: left; line-height: 73rpx">{{ble.flow_velocity}}m³/s</text>
+                  </view>
+                  <!-- <view style="background-color: #F1F1F1; flex: 1;display: flex; align-items: center; justify-content: center">
+                  </view> -->
+                  <view style="background-color: #F1F1F1; flex: 1;">
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      
+
+
+<!-- !--pages/radar-list/radar-list.wxml-->
+<!-- <view class=" page"> -->
+  <!-- <view class="header" style='width:90%'>
+    <view style='padding-left: 10rpx;width:70%'>
+      {{_lang["雷达数量"]}}：{{bleList.length}}
+    </view>
+    <view class="refresh-btn" catchtap="cat_refreshBle" style="margin-left: -60px; width: 165rpx; height: 46rpx; display: block; box-sizing: border-box; text-align: center; font-size: 24rpx; line-height: 45rpx">{{_lang["刷新"]}}</view>
+    <picker bindchange="changeLang" value="{{languageIndex}}" range="{{languageArray}}" style="width: 260rpx; height: 46rpx; display: block; box-sizing: border-box">
+      <view class="picker"  style="width: 120rpx; height: 50rpx; display: block; box-sizing: border-box" position="relative" style="margin-left: 30px; width: 211rpx; height: 49rpx; display: block; box-sizing: border-box; text-align: center; font-size: 24rpx; line-height: 47rpx">
+          {{currentLanguage}} <i class="sz szxia"></i>
+      </view>
+    </picker>
+  </view>
+	<view wx:for='{{bleList}}' wx:for-index="idx" wx:for-item="ble" wx:key="deviceid" class="card" style='text-align:center;width:90%'>
+		<view class=' card-head'>
+			<view class="radar-name">{{ble.name}}({{ble.RSSI}})({{_lang[ble.deviceType]}})</view>
+			<view id='{{ble.deviceid}}' class="config-btn" catchtap="cat_enterRadar" data-devicemode='{{ble.v_sensorMode}}' data-devicename='{{ble.name}}' data-devicemodbusaddr='{{ble.modbus_addr}}'>{{_lang["设置"]}}</view>
+		</view>
+		<view class="card-body">
+      <view wx:if="{{ble.deviceType == '物位计'}}" class="param-body">
+        <view class="mode-badge-value-1">{{_lang[ble.v_sensorMode]}}</view>
+        <view>{{ble.v_dampingVal}}m</view>
+        <view class="mode-badge-value-1">{{_lang[ble.v_mAcurrentutputFunction]}}</view>
+        <view>{{ble.v_mARealtimeValue}}mA</view>
+      </view>
+      <view wx:else="{{ble.deviceType == '水位计'}}" class="param-body">
+        <view class="mode-badge-value-1">{{_lang[ble.v_sensorMode]}}</view>
+        <view>{{ble.v_waterLevel}}m</view>
+      </view>
+		</view>
+	</view> -->
+
+	
+	<!-- <view class="flex-col page space-y-11">
+		<view class="section"></view>
+		<view class="flex-col group space-y-28" style="width: 750rpx; height: 326rpx; display: block; box-sizing: border-box">
+			<view class="flex-col justify-start section_2" style="width: 694rpx; height: 109rpx; display: block; box-sizing: border-box ">
+			<view class="flex-row justify-between items-center section_3" style="width: 670rpx; height: 85rpx; display: block; box-sizing: border-box">
+				<text class="font_1">{{_lang["雷达数量"]}}：{{bleList.length}}</text>
+				<view class="flex-col justify-start items-start text-wrapper" style="position: relative; left: 243rpx; top: -49rpx; width: 135rpx; height: 53rpx; display: block; box-sizing: border-box"><text class="font_1 text" style="position: relative; left: -6rpx; top: -16rpx" catchtap="cat_refreshBle">{{_lang["刷新"]}}</text><view class="iconfont icon-shuaxin" style="width: 39rpx; height: 50rpx; display: block; box-sizing: border-box; position: relative; left: 81rpx; top: -59rpx"></view></view>
+				<picker bindchange="changeLang" value="{{languageIndex}}" range="{{languageArray}}" style="width: 135rpx; height: 52rpx; display: block; box-sizing: border-box; position: relative; left: 464rpx; top: -100rpx">
+				<view class="picker"  style="width: 120rpx; height: 50rpx; display: block; box-sizing: border-box" position="relative" style="margin-left: 30px; width: 131rpx; height: 49rpx; display: block; box-sizing: border-box; text-align: center; font-size: 24rpx; line-height: 47rpx; position: relative; left: -54rpx; top: 0rpx">
+					{{currentLanguage}} <i class="sz szxia"></i>
+				</view>
+				</picker>
+			</view>
+			</view>
+				
+			<view wx:for='{{bleList}}' wx:for-index="idx" wx:for-item="ble" wx:key="deviceid">
+				<view class="flex-col section_5" style="width: 694rpx; height: 144rpx; display: block; box-sizing: border-box; position: relative; left: 0rpx; top: -33rpx">
+					<view class="flex-row justify-between items-center section_4" style="width: 694rpx; height: 78rpx; display: block; box-sizing: border-box; position: relative; left: -2rpx; top: -2rpx">
+						<text class="font_1" style="position: relative; left: 0rpx; top: 8rpx">{{ble.name}}({{ble.RSSI}})</text>
+						<text class="font_1 text_3" style="position: relative; left: 20rpx; top: 9rpx">({{_lang[ble.deviceType]}})</text>
+						<view class="shrink-0 section_6" style="position: relative; left: 347rpx; top: -41rpx; width: 74rpx; height: 51rpx; display: block; box-sizing: border-box"></view>
+						<view class="flex-col justify-start items-start text-wrapper_2" style="position: relative; left: 520rpx; top: -92rpx; width: 115rpx; height: 48rpx; display: block; box-sizing: border-box"><text class="font_1 text_4" style="position: relative; left: 15rpx; top: -17rpx" catchtap="cat_enterRadar" data-devicemode='{{ble.v_sensorMode}}' data-devicename='{{ble.name}}'>{{_lang["设置"]}}</text><view class="iconfont icon-shezhi" style="position: relative; left: 73rpx; top: -60rpx; width: 37rpx; height: 46rpx; display: block; box-sizing: border-box"></view>
+					</view>
+					<view class="flex-row items-center group_2 space-x-24" style="width: 691rpx; height: 75rpx; display: block; box-sizing: border-box; position: relative; left: -33rpx; top: 70rpx">
+						<view wx:if="{{ble.deviceType == '物位计'}}" style="position: relative; left: 0rpx; top: -172rpx; width: 606rpx; height: 66rpx; display: block; box-sizing: border-box">
+							<view class="flex-col justify-start items-center text-wrapper_3" style="position: relative; left: -13rpx; top: -16rpx"><text class="text_5" style="position: relative; left: 14rpx; top: -7rpx">{{_lang[ble.v_sensorMode]}}</text></view>
+							<text class="font_1 text_6" style="position: relative; left: 36rpx; top: -64rpx">{{ble.v_dampingVal}}m</text>
+							<view class="flex-col justify-start items-center text-wrapper_3" style="position: relative; left: 303rpx; top: -87rpx"><text class="text_5" style="position: relative; left: 14rpx; top: -7rpx">{{_lang[ble.v_mAcurrentutputFunction]}}</text></view>
+							<text class="font_1 text_6" style="position: relative; left: 489rpx; top: -137rpx">{{ble.v_mARealtimeValue}}mA</text>
+						</view>
+						<view wx:elif="{{ble.deviceType == '水位计'}}" style="position: relative; left: 0rpx; top: -172rpx; width: 606rpx; height: 66rpx; display: block; box-sizing: border-box">
+							<view class="flex-col justify-start items-center text-wrapper_3" style="position: relative; left: -13rpx; top: -16rpx"><text class="text_5" style="position: relative; left: 14rpx; top: -7rpx">{{_lang[ble.v_sensorMode]}}</text></view>
+							<text class="font_1 text_6" style="position: relative; left: 36rpx; top: -64rpx">{{ble.v_waterLevel}}m</text>
+						</view>
+						<view wx:else="{{ble.deviceType == '流速计'}}" style="position: relative; left: 0rpx; top: -172rpx; width: 606rpx; height: 66rpx; display: block; box-sizing: border-box">
+							<view class="flex-col justify-start items-center text-wrapper_3" style="position: relative; left: 31rpx; top: 10rpx"><text class="text_5" style="position: relative; left: 14rpx; top: -7rpx">{{_lang[ble.v_sensorMode]}}</text></view>
+							<text class="font_1 text_6" style="position: relative; left: 208rpx; top: -41rpx">{{ble.v_waterLevel}}m</text>
+						</view>
+					</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view> -->
+
+	<!--登录界面-->
+	<view wx:if='{{loginOpen }}' class="weui-demo-dialog ">
+		<view class="weui-mask" bindtap="closeLogin"></view>
+		<view class="weui-dialog__wrp" bindtap="">
+			<view class="weui-dialog" catchtap="">
+				<view class="weui-dialog__hd">
+					<view class="weui-dialog__title">{{_lang["请输入蓝牙密码"]}}</view>
+				</view>
+				<view class="weui-dialog__bd ">
+					<view class="flex-item-input">
+						<input  bindinput="bindKeyInputChange" class="weui-input " type='number' placeholder="{{_lang['六位数字密码']}}" value='{{loginKey}}' />
+					</view>
+				</view>
+				<view class="weui-dialog__ft">
+					<view class="weui-dialog__btn weui-dialog__btn_default" bindtap="closeLogin">{{_lang["取消"]}}</view>
+					<view class="weui-dialog__btn" bindtap="btn_connectAndLogin">{{_lang["确定"]}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,45 @@
+<!--component/measureResults/measureResults.wxml-->
+
+<view class="layout_vertical ">
+	<view class="layout_horizontal">
+		<!--物位计实时读数，电流值-->
+		<view class="layout_vertical" style="width:680rpx;">
+			<view wx:if='{{bleName.length}}' >
+				<div class="ble_name" style="width:680rpx;">{{v_bleName}}</div>
+			</view>
+			<!-- 雷达实时测量数据 传感器类别-->
+			<view class="layout_horizontal ">
+				<div class="mode-badge-div">
+					<span class="mode-badge-value ">{{_lang[v_sensorMode]}}</span>
+				</div>
+				<div class="row_value_1 ">{{v_DampingResult}}m</div>
+			</view>
+			<!-- 电流实时值 电流函数 -->
+			<view class="layout_horizontal">
+				<div class="mode-badge-div">
+					<span class="mode-badge-value">{{_lang[v_mAcurrentutputFunction]}}</span>
+				</div>
+				<div class="row_value_2 ">{{v_mARealtimeValue}}mA({{v_Percentage}})</div>
+			</view>
+		</view>
+		<!--设备图片 设备连接状态-->
+
+		<view class="view-image-radar weui-article__p ">
+			<!-- <picker catchtap="cat_openBleList" bindcancel='cat_cancel' bindchange="cat_changeBle" value="{{ble_index}}" range="{{bleList}}" range-key="name"> -->
+			<view class="picker">
+				<image class="image-radar weui-article__img" src="../../images/radar1.jpg" mode="aspectFit" />
+				<!--连接状态-->
+				<view class="con-badge" wx:if="{{bleConnectStatus}}" style="">C</view>
+				<view class="off-badge" wx:if="{{!bleConnectStatus}}" style="">{{bleList.length}}</view>
+			</view>
+			<!-- </picker> -->
+		</view>
+	</view>
+	<!--错误信息-->
+	<view wx:if='{{v_error}}' class="layout_horizontal border" style='flex:1'>
+		<icon class="icon-small" type="warn" size="23"></icon>
+		<view class="row_value_2 error_msg" style='flex:8'>{{v_error}}</view>
+	</view>
+
+
+</view>

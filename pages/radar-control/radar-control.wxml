@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="page">
+	<view>
+		<radar-data bind:blecancel='onBleListCancel' bind:blelisttap='onBleListDisplay' bind:bleconnect="onbleSelect"
+			ble-list='{{bleList}}' comm-error='{{commError}}' radar-error-code='{{radarInfo_data.errorCode}}'
+			m-a-realtime-value='{{radarInfo_data.mARealtimeValue}}' damping-result='{{radarInfo_data.dampingResult}}'
+			sensor-mode='{{radarInfo_data.sensorMode}}' m-acurrentutput-function='{{radarInfo_data.mAcurrentutputFunction}}' ble-connect-status='{{bleConnectStatus}}' ble-name='{{radarInfo_data.bleName}}' _lang='{{_lang}}'/>
+	</view>
+
+	<!--分割线-->
+	<view class="line"></view>
+  
+	<!--LCD曲线-->
+	<view class="view-wave ">
+		<radar-wave wx:if='{{!loginOpen}}' fft-wave="{{l_lcd_fft}}" tvt-wave="{{l_lcd_tvt}}"
+			damping-val='{{radarInfo_data.dampingVal}}' _lang='{{_lang}}'/>
+	</view>
+
+	<!--分割线-->
+	<view class="line"></view>
+
+	<!--设置菜单-->
+	<view>
+		<radar-set set-menu='{{setMenu}}' radar-info='{{radarInfo_set}}' _lang='{{_lang}}' logged-in='{{loggedIn}}' bind:setcmd="onSetCmd" version-req='{{versionReq}}'/>
+		<!-- 远程协助 -->
+		<remote-assistance wx:if='{{remoteAssistance}}' id='remoteAssistanceCom' radar-data="{{assistanceData}}" remote-id="{{remoteId}}"
+			remote-pk="{{remotePk}}" url='{{url}}' bind:on-login="onRemoteAssisntanceLogin"
+			bind:on-close="onRemoteAssisntanceClose" bind:on-data="onRemoteAssisntanceData" _lang='{{_lang}}'/>
+	</view>
+</view>
+<!--Page end-->

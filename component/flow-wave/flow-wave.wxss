@@ -1,0 +1,5 @@
+/* component/radar-wave/radar-wave.wxss */
+.view-wave {
+    width: 740rpx;
+    height: 510rpx;
+}

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../../component/ec-canvas/ec-canvas",
+    "water-wave": "../../component/water-wave/water-wave",
+    "t-icon": "/miniprogram_npm/tdesign-miniprogram/icon/icon",
+    "text-com": "../../component/text-com/text-com",
+    "select-com": "../../component/select-com/select-com"
+  }
+}

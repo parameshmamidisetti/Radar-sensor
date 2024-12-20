@@ -1,0 +1,9 @@
+git status
+
+git add .
+
+git commit -m '增加了wsClient_MCLink与iot平台连接、登录、心跳、数据收发，基于websocket；增加了remote-assistance组件用于驱动wsClient，并在radar-control组件之下与其通讯，交换远程平台的连接、登录、断开状态和收发数据；修改了radarCom中的数据接收解析、命令发送等函数，使其能够响应远程协助状态切换和收发远程协助数据；'
+
+git push origin master
+
+git pull origin master

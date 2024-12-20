@@ -1,0 +1,30 @@
+<!--component/measureResults/measureResults.wxml-->
+
+<view class="layout_vertical ">
+	<view class="layout_horizontal">
+		<view class="layout_vertical" style="width:680rpx;">
+			<view wx:if='{{bleName.length}}'>
+				<div class="ble_name" style="width:680rpx;">{{v_bleName}}</div>
+			</view>
+			<view class="layout_horizontal">
+				<div class="mode-badge-div">
+					<span class="mode-badge-value">水位</span>
+				</div>
+				<div class="row_value_1 ">{{v_waterLevel}}m</div>
+			</view>
+		</view>
+    <view class="view-image-radar weui-article__p ">
+      <view class="picker">
+        <image class="image-radar weui-article__img" src="../../images/radar3.jpg" mode="aspectFit" />
+        <!--连接状态-->
+        <view class="con-badge" wx:if="{{bleConnectStatus}}" style="">C</view>
+        <view class="off-badge" wx:if="{{!bleConnectStatus}}" style="">{{bleList.length}}</view>
+      </view>
+    </view>
+	</view>
+  
+	<view wx:if='{{v_error}}' class="layout_horizontal border" style='flex:1'>
+		<icon class="icon-small" type="warn" size="23"></icon>
+		<view class="row_value_2 error_msg" style='flex:8'>{{v_error}}</view>
+	</view>
+</view>

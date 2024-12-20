@@ -1,0 +1,155 @@
+
+<view style="display: flex; flex-direction: column; height: 1497rpx; width: 750rpx; box-sizing: border-box">
+  <view style="background-color: #ffffff; width: 750rpx; height: 447rpx; display: block; box-sizing: border-box">
+    <view style="background: #134591; height: 100%; width: 100%; border-top: 25px  solid transparent; border-left: 25px  solid transparent; border-right: 25px   solid transparent; border-bottom: 25px  solid #ffffff; display: flex; align-items: center; justify-content: center">
+      <view style="background: #ffffffa8; height: 350rpx; display: block; box-sizing: border-box; width: 80%; position: relative; left: 622rpx; top: -1rpx; border-top-left-radius: 15px; border-top-right-radius: 15px"></view>
+      <view style="width: 90%; background: #ffffff8f; height: 90%; position: relative; left: 66rpx; top: 18rpx; border-top-left-radius: 15px; border-top-right-radius: 15px; border-top-right-radius: 15px"></view>
+      <view style="width: 100%; background: #ffffff; height: 80%; position: relative; left: -556rpx; top: 35rpx; border-top-left-radius: 15px; border-top-right-radius: 15px">
+        <view style="display: flex; flex-direction: column; height: 100%; width: 100%; border-top-right-radius: 15px; border-top-left-radius: 15px;">
+          <view style="background-color: #ffffff; width: 654rpx; height: 195rpx; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-top-right-radius: 15px; border-top-left-radius: 15px;">
+            <view style="background: #ffffff; height: 100%; width: 28%;">
+              <!-- <image style="position: relative; width: 100%; height: 100%" src="../../images/flow-icon2.png" /> -->
+            </view>
+          </view>
+          <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+            <view style="background: #ffffff; height: 80%; width: 80%; border-style: solid; border-width: 1px; border-color: #E6E6E6">
+              <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+                <view style="background-color: #ffffff; flex: 1;display: flex; align-items: center; justify-content: center;">
+                  <view style="width: 80%; background: #134591; height: 65%; border-radius: 10px; display: flex; align-items: center">
+                    <text style="position: relative; height: 100%; width: 100%; text-align: center; color: #ffffff; line-height: 40rpx">{{_lang['流量']}}</text>
+                  </view>
+                </view>
+                <view style="background-color: #ffffff; width: 260rpx; height: 100%rpx; box-sizing: border-box; display: flex; align-items: center; justify-content: center">
+                  <!-- <text style="position: relative; width: 100%; height: 100%; text-align: center; line-height: 60rpx">RFM2480</text> -->
+                </view>
+                <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center">
+                  <text style="position: relative; width: 100%; height: 100%; text-align: center; line-height: 60rpx">{{_lang['流量计']}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="background-color: #ffffff; width: 750rpx; height: 122rpx; text-align: border-box; display: flex; align-items: center; justify-content: center">
+    <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+      <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+        <text style="font-size: 35rpx; color: rgb(14, 112, 197)">{{_lang['累计流量']}} {{totalVolume}}</text>
+      </view>
+      <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+        <text style="font-size: 35rpx; color: rgb(14, 112, 197)">{{_lang['水位']}} {{waterLevel}}</text>
+      </view>
+    </view>
+  </view>
+  <view style="background-color: #ffffff; width: 750rpx; height: 122rpx; text-align: border-box; display: flex; align-items: center; justify-content: center">
+    <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+      <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+        <text style="font-size: 35rpx; color: rgb(14, 112, 197)">{{_lang['实时流速']}} {{realTimeFlow}}</text>
+      </view>
+      <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+        <text style="font-size: 35rpx; color: rgb(14, 112, 197)">{{_lang['平均流速']}} {{meanFlow}}</text>
+      </view>
+    </view>
+  </view>
+  <view style="background-color: #ffffff; width: 750rpx; height: 122rpx; text-align: border-box; display: flex; align-items: center; justify-content: center">
+    <view style="display: flex; flex-direction: row; height: 100%; width: 100%">
+      <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+        <text style="font-size: 50rpx; color: rgb(14, 112, 197)">{{angleValue}}°</text>
+      </view>
+      <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+        <text style="position: relative; width: 270rpx; height: 122rpx; text-align: center; font-size: 80rpx; color: green; line-height: 110rpx; display: block; box-sizing: border-box; top: 0rpx">{{measureResult}}</text>
+      </view>
+      <view style="background-color: #ffffff; flex: 1; display: flex; align-items: center; justify-content: center;">
+        <view wx:if="{{!readWaveFlag}}" style="width: 204rpx; height: 70%; position: relative; top: 0rpx; box-sizing: border-box; background-color: #134591; display: flex; justify-content: center; align-items: center; border-radius: 30rpx">
+        <text style="position: relative; background-color: #134591; font-size: 30rpx; color: white" catchtap="{{!buttonLock ? 'onChartClick':''}}">{{_lang['开始读波形']}}</text>
+        </view>
+        <view wx:else="{{readWaveFlag}}" style="width: 204rpx; height: 70%; position: relative; top: -2rpx; box-sizing: border-box; background-color: #d429aa; display: flex; justify-content: center; align-items: center; border-radius: 30rpx">
+          <text style="position: relative; background-color: #d429aa; font-size: 30rpx; color: white" catchtap="{{!buttonLock ? 'onChartClick':''}}">{{_lang['结束读波形']}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="background-color: #F1F1F1; width: 750rpx; height: 512rpx; display: block; box-sizing: border-box">
+    <view class="chart view-wave" style="width: 100%; height: 100%">
+      <flow-wave wx:if='{{!loginOpen}}' fft-wave="{{echo_fft}}" tvt-wave="{{echo_tvt}}" tvt-base-wave="{{echo_tvt_base}}" _lang="{{_lang}}" flow-value="{{measureResult}}"/>
+    </view>
+  </view>
+  <view style="background-color: #ffffff; width: 750rpx; height: 418rpx; display: block; box-sizing: border-box">
+    <view style="display: flex; flex-direction: column; height: 100%; width: 100%">
+      <view wx:for="{{f_setList}}" wx:for-index="menuIdx" wx:for-item="menuItem" wx:key="name">
+        <view style="background-color: #ffffff; width: 750rpx; height: 75rpx; display: flex; align-items: center;">
+          <view style="background: #ffffff; height: 80%; width: 30%; border-radius: 10px; border-style: solid; border-width: 1px; border-color: #cecece; margin-left: 20rpx">
+            <view style="display: flex; flex-direction: row; height: 100%; width: 100%; border-radius: 10px">
+              <view style="background-color: #ffffff; flex: 1; border-top-left-radius: 10px; border-bottom-left-radius: 10px; display: flex; align-items: center;justify-content: center;">
+                <view wx:if="{{menuItem.show}}">
+                  <view class="iconfont icon-xiangxia" id="{{menuItem.id}}" catchtap="onListClick"></view>
+                </view>
+                <view wx:elif="{{!menuItem.show}}">
+                  <view class="iconfont icon-xiangyou" id="{{menuItem.id}}" catchtap="onListClick"></view>
+                </view>
+              </view>
+              <view style="background-color: #ffffff; border-top-right-radius: 10px; border-bottom-right-radius: 10px; width: 147rpx; height: 56rpx; display: flex; align-items: center; justify-content: center;">
+                <view style="background: #134591; height: 92%; width: 98%; border-top-right-radius: 10px; border-bottom-right-radius: 10px;display: flex; align-items: center; justify-content: center;">
+                  <text style="position: relative; color: #ffffff; font-size: 25rpx" id="{{menuItem.id}}" catchtap="onListClick">{{_lang[menuItem.name]}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{menuItem.show}}">
+          <view wx:for="{{menuItem.items}}" wx:for-index="itemIdx" wx:for-item="Item" wx:key="name">
+            <view wx:if="{{Item.type == 'text'}}">
+              <text-com text-label="{{Item.head}}" text-unit="{{Item.unit}}" text="{{Item.value}}" tips="{{Item.tips}}"  bind:setcmd="onWritecmd" bind:readcmd="onReadcmd" variable="{{Item.variable}}" com-id="{{menuItem.id}}" com-id-2="{{Item.id}}" text-type="{{Item.textType}}" _lang="{{_lang}}" button-lock="{{buttonLock}}"/>
+            </view>
+            <view wx:elif="{{Item.type == 'select'}}">
+              <select-com text-label="{{Item.head}}" text-unit="{{Item.unit}}" select-items="{{Item.option}}" bind:setcmd="onWritecmd" bind:readcmd="onReadcmd" variable="{{Item.variable}}" choice-item="{{Item.value}}" com-id="{{menuItem.id}}" com-id-2="{{Item.id}}" _lang="{{_lang}}" button-lock="{{buttonLock}}"/>
+            </view>
+          </view>
+        </view>
+     </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="flex-col page">
+  <view class="flex-col justify-start relative group">
+    <view class="flex-col justify-start items-center relative section">
+      <view class="section_3"></view>
+      <view class="section_2 pos"></view>
+      <view class="flex-col justify-start items-center section_4 pos_2"><view class="section_5"></view></view>
+      <view class="flex-row items-center section_6 pos_3">
+        <view class="flex-col justify-start items-center shrink-0 text-wrapper"><text class="font_1">流速</text></view>
+        <text class="font_2 text">RVN2400</text>
+        <text class="font_2 text_2">流速计</text>
+      </view>
+    </view>
+    <image
+      class="image pos_4"
+      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6406adec5a7e3f03100a6e1b/6406ae0699e5b10011975c45/16782040323816568842.png"
+    />
+    <image
+      class="image pos_5"
+      src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6406adec5a7e3f03100a6e1b/6406ae0699e5b10011975c45/16782040323816568842.png"
+    />
+    <view class="section_7 pos_6"></view>
+  </view>
+  <view class="section_8"></view>
+  <view class="flex-col justify-start items-end self-start section_9">
+    <view class="flex-col justify-start items-center text-wrapper_2"><text class="font_1">基本设置</text></view>
+  </view>
+  <view class="flex-col section_10 space-y-6">
+    <text class="self-start font_1 text_3">从机地址</text>
+    <view class="flex-row justify-between group_2">
+      <image
+        class="image_2"
+        src="https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/6406adec5a7e3f03100a6e1b/6406ae0699e5b10011975c45/16782040323880798640.png"
+      />
+      <view class="flex-row space-x-20">
+        <view class="flex-col justify-start items-start text-wrapper_3"><text class="font_1 text_4">读取</text></view>
+        <view class="flex-col justify-start items-start text-wrapper_3"><text class="font_1 text_4">设置</text></view>
+      </view>
+    </view>
+  </view>
+</view> -->
+

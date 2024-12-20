@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "water-data":"../../component/water-data/water-data",
+        "radar-set":"../../component/radar-set/radar-set",
+        "ec-canvas": "../../component/ec-canvas/ec-canvas",
+        "water-wave":"../../component/water-wave/water-wave",
+        "remote-assistance": "../../component/remote-assistance/remote-assistance",
+        "text-com": "../../component/text-com/text-com",
+        "select-com": "../../component/select-com/select-com"
+    }
+}
